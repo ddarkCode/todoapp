@@ -27,11 +27,11 @@ ul {
 
 .logo-span {
   position: relative;
-  left: 450px;
+  left: 300px;
 }
 
 .delete-button {
-  margin-left: 500px;
+  margin-left: 400px;
   width: 124px;
   height: 40px;
   font-family: inherit;
