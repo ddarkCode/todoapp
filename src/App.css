@@ -17,6 +17,7 @@ input {
   border: 1px solid #bdbdbd;
   box-sizing: border-box;
   border-radius: 12px;
+  font-family: inherit;
 }
 
 ul {
@@ -50,7 +51,7 @@ li {
 .active {
   width: 46px;
   height: 17px;
-  font-family: Montserrat;
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -104,7 +105,7 @@ li {
   font-size: 14px;
   line-height: 17px;
   color: #ffffff;
-  outline: none;
+  border: none;
   margin-left: 30px;
 }
 
@@ -113,32 +114,4 @@ li {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.item {
-  min-height: 70px;
-  display: flex;
-  align-items: center;
-}
-
-input:checked + p {
-  text-decoration: line-through;
-  text-decoration-color: #a683e3;
-}
-
-input[type='checkbox'] {
-  width: 30px;
-  height: 30px;
-}
-
-p {
-  margin: 0;
-  padding: 20px;
-  font-size: 20px;
-  font-weight: 200;
-  color: #00204a;
-}
-
-ul {
-  text-align: left;
 }

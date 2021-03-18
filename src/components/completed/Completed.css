@@ -1,0 +1,43 @@
+.completed-item {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+input[type='checkbox'] {
+  width: 30px;
+  height: 30px;
+}
+
+.completed-p {
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 200;
+  color: #00204a;
+  text-decoration: line-through;
+  text-decoration-color: #a683e3;
+}
+
+ul {
+  text-align: left;
+}
+
+.delete {
+}
+
+.logo-span {
+  position: relative;
+  left: 450px;
+}
+
+.delete-button {
+  margin-left: 500px;
+  width: 124px;
+  height: 40px;
+  font-family: inherit;
+  color: #fff;
+  background: #eb5757;
+  border-radius: 4px;
+
+  border: none;
+}

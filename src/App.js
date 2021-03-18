@@ -1,8 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import './App.css';
+import TodoList from './components/TodoList';
+import AllTodos from './components/AllTodos';
+import Form from './components/Form';
+import DisplayButtons from './components/DisplayButtons';
+import Completed from './components/completed/Completed';
 
 function App() {
+  const [allTodos, setAllTodos] = useState(
+    JSON.parse(localStorage.getItem('allTodos')) || []
+  );
+  const [activeTodos, setActiveTodos] = useState(
+    JSON.parse(localStorage.getItem('activeTodos')) || []
+  );
+  const [completedTodos, setCompletedTodos] = useState(
+    JSON.parse(localStorage.getItem('completedTodos')) || []
+  );
+
+  useEffect(() => {
+    localStorage.setItem('allTodos', JSON.stringify(allTodos));
+  }, [allTodos]);
+  useEffect(() => {
+    localStorage.setItem('activeTodos', JSON.stringify(activeTodos));
+  }, [activeTodos]);
+  useEffect(() => {
+    localStorage.setItem('completedTodos', JSON.stringify(completedTodos));
+  }, [completedTodos]);
+
+  const [tasks, setTasks] = useState('');
+
   const [isAll, setIsAll] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
@@ -22,45 +49,68 @@ function App() {
     if (isAll) setIsAll(!isAll);
     setIsActive(!isActive);
   }
+
+  function handleChange(event) {
+    const { value } = event.target;
+    setTasks(value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    setAllTodos((prevState) => {
+      return [...prevState, tasks];
+    });
+    setActiveTodos((prevState) => {
+      return [...prevState, tasks];
+    });
+
+    setTasks('');
+  }
+
+  function markComplete(todo) {
+    setCompletedTodos((prevState) => {
+      return [...prevState, todo];
+    });
+    setActiveTodos((prevState) => prevState.filter((task) => task !== todo));
+  }
+
+  function deleteAll() {
+    setActiveTodos([]);
+    setAllTodos([]);
+    setCompletedTodos([]);
+    localStorage.removeItem('allTodos');
+    localStorage.removeItem('activeTodos');
+    localStorage.removeItem('completedTodos');
+  }
+
+  function deleteOne(task) {
+    setCompletedTodos((prevState) => {
+      return prevState.filter((item) => item !== task);
+    });
+    setAllTodos((prevState) => {
+      return prevState.filter((item) => item !== task);
+    });
+  }
+
   return (
     <div className='app'>
       <h1>#todo</h1>
-      <div className='buttons'>
-        <button className='all' onClick={toggleIsAll}>
-          All
-        </button>
-        <button className='active' onClick={toggleIsActive}>
-          Active
-        </button>
-        <button className='completed' onClick={toggleIsComplete}>
-          Completed
-        </button>
-      </div>
-      <form>
-        <input type='text' />
-        <button className='add' type='submit'>
-          Add
-        </button>
-      </form>
+      <DisplayButtons
+        toggleIsActive={toggleIsActive}
+        toggleIsAll={toggleIsAll}
+        toggleIsComplete={toggleIsComplete}
+      />
+      <Form onSubmit={handleSubmit} onChange={handleChange} task={tasks} />
       {isAll ? (
-        <ul>
-          <li class='item'>
-            <input type='checkbox' />
-            <p> element </p>
-          </li>
-        </ul>
+        <AllTodos todos={allTodos} completedTodos={completedTodos} />
       ) : isActive ? (
-        <ul>
-          <li>Task1</li>
-          <li>Task1</li>
-          <li>Task1</li>
-        </ul>
+        <TodoList todos={activeTodos} markComplete={markComplete} />
       ) : isComplete ? (
-        <ul>
-          <li>Task2</li>
-          <li>Task2</li>
-          <li>Task2</li>
-        </ul>
+        <Completed
+          todos={completedTodos}
+          deleteAll={deleteAll}
+          deleteOne={deleteOne}
+        />
       ) : null}
     </div>
   );
