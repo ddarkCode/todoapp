@@ -1,0 +1,13 @@
+header h1 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+  letter-spacing: -0.045em;
+  color: #333333;
+}
+
+header {
+  margin-bottom: 50px;
+}

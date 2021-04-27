@@ -1,0 +1,12 @@
+.toggle-button-container button {
+  border: none;
+  outline: none;
+  background-color: #fff;
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #333333;
+  width: 100px;
+}

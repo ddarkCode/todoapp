@@ -4,5 +4,43 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px auto;
+}
+
+span {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.complete-task {
+  text-decoration: line-through;
+}
+
+input[type='checkbox'] {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+}
+
+li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin: 5px 0;
 }
