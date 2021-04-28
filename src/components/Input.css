@@ -35,3 +35,24 @@
   color: #fff;
   width: 10vw;
 }
+
+@media screen and (max-width: 600px) {
+  .input-section {
+    justify-content: space-evenly;
+    width: 100vw;
+  }
+
+  .input-section input {
+    width: 60vw;
+    padding: 3px;
+    height: 36px;
+    font-size: 16px;
+    border-radius: 15px;
+  }
+
+  .input-section button {
+    font-size: 12px;
+    height: 40px;
+    width: 30vw;
+  }
+}

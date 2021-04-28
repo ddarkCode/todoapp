@@ -21,3 +21,9 @@
   margin-top: 30px;
   margin-left: auto;
 }
+
+@media screen and (max-width: 600px) {
+  .delete-all {
+    margin-left: 120px;
+  }
+}
