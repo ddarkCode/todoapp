@@ -62,8 +62,6 @@ const Main = () => {
   };
 
   const deleteAll = () => {
-    setActiveList([]);
-    setAllList([]);
     setCompletedList([]);
   };
 
